@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearpath Immigration - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #f5f5f5; }
+        
+        /* LOGIN PAGE */
+        .login-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(135deg, #1a2a4a 0%, #2d3e5f 100%); }
+        .login-box { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); width: 100%; max-width: 400px; }
+        .login-box h1 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 10px; color: #1a2a4a; }
+        .login-box p { color: #666; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #333; font-weight: 500; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
+        .form-group input:focus { outline: none; border-color: #d4a574; }
+        .btn { width: 100%; padding: 12px; background: #1a2a4a; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .btn:hover { background: #2d3e5f; }
+        
+        /* DASHBOARD */
+        .hidden { display: none !important; }
+        .dashboard { min-height: 100vh; background: #f5f5f5; }
+        .navbar { background: #1a2a4a; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h1 { font-family: 'Playfair Display', serif; font-size: 24px; }
+        .logout-btn { background: #d4a574; color: #1a2a4a; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        
+        .sidebar { position: fixed; left: 0; top: 65px; width: 250px; background: #2d3e5f; color: white; padding: 20px; height: calc(100vh - 65px); overflow-y: auto; }
+        .sidebar a { display: block; padding: 15px; margin: 10px 0; background: #1a2a4a; border-radius: 5px; color: white; text-decoration: none; cursor: pointer; text-align: center; font-weight: 600; }
+        .sidebar a:hover { background: #d4a574; color: #1a2a4a; }
+        .sidebar a.active { background: #d4a574; color: #1a2a4a; }
+        
+        .content { margin-left: 250px; padding: 30px; margin-top: 65px; }
+        
+        /* PAGES */
+        .page { display: none; }
+        .page.active { display: block; }
+        
+        .page h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 20px; color: #1a2a4a; border-bottom: 3px solid #d4a574; padding-bottom: 10px; }
+        
+        /* SERVICES */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .service-card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-left: 5px solid #d4a574; }
+        .service-card h3 { color: #1a2a4a; margin-bottom: 10px; }
+        .service-card p { color: #666; line-height: 1.6; }
+        
+        /* PRICING */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .pricing-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; border-top: 5px solid #d4a574; }
+        .pricing-card h3 { color: #1a2a4a; margin-bottom: 15px; font-size: 22px; }
+        .price { font-size: 36px; color: #d4a574; font-weight: 700; margin: 15px 0; }
+        .price-currency { font-size: 18px; }
+        .features { text-align: left; margin: 20px 0; padding: 20px; background: #f9f9f9; border-radius: 5px; }
+        .features li { list-style: none; padding: 8px 0; color: #666; border-bottom: 1px solid #eee; }
+        .features li:last-child { border-bottom: none; }
+        .select-btn { background: #1a2a4a; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; margin-top: 15px; width: 100%; }
+        .select-btn:hover { background: #2d3e5f; }
+        
+        /* CONTACT */
+        .contact-section { max-width: 600px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .contact-info { background: #1a2a4a; color: white; padding: 20px; border-radius: 5px; margin: 20px 0; }
+        .contact-info p { margin: 10px 0; font-size: 16px; font-weight: 600; }
+        .contact-form { margin-top: 30px; }
+        .contact-form .form-group { margin-bottom: 20px; }
+        .contact-form textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'DM Sans', sans-serif; }
+        
+        /* FAQ */
+        .faq-item { background: white; margin-bottom: 15px; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .faq-question { padding: 20px; background: #1a2a4a; color: white; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-radius: 5px; }
+        .faq-question:hover { background: #2d3e5f; }
+        .faq-answer { padding: 20px; color: #666; display: none; border-top: 1px solid #eee; }
+        .faq-answer.active { display: block; }
+        .faq-toggle { font-size: 20px; }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 100%; position: relative; top: 0; height: auto; display: flex; flex-direction: row; overflow-x: auto; }
+            .content { margin-left: 0; margin-top: 0; }
+            .sidebar a { margin: 0 10px; }
+            .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-page">
+    <div class="login-box">
+        <h1>Clearpath Immigration</h1>
+        <p>Access your dashboard</p>
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="dashboard hidden">
+    <div class="navbar">
+        <h1>Clearpath Immigration</h1>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    
+    <div class="sidebar">
+        <a onclick="showPage('services')" class="nav-link active">Services</a>
+        <a onclick="showPage('pricing')" class="nav-link">Pricing</a>
+        <a onclick="showPage('faq')" class="nav-link">FAQ</a>
+        <a onclick="showPage('contact')" class="nav-link">Contact</a>
+    </div>
+    
+    <div class="content">
+        
+        <!-- SERVICES PAGE -->
+        <div id="services" class="page active">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Tourist Visa</h3>
+                    <p>Fast-track visa processing for tourists. Get approved in days with our expert guidance and support.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Business Visa</h3>
+                    <p>Specialized business visa solutions for entrepreneurs and professionals. Start your business journey today.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Student Visa</h3>
+                    <p>Complete student visa support. We guide you through every step of your academic journey abroad.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Work Permit</h3>
+                    <p>Secure your work permit with ease. Our team ensures compliance with all employment requirements.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Family Sponsorship</h3>
+                    <p>Reunite with your loved ones. We handle all family visa applications professionally.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Permanent Residence</h3>
+                    <p>Your pathway to permanent residence. Expert guidance for immigration and settlement.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PRICING PAGE -->
+        <div id="pricing" class="page">
+            <h2>Visa Plans & Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Standard Tourist</h3>
+                    <div class="price"><span class="price-currency">€</span>1,390</div>
+                    <ul class="features">
+                        <li>✓ Basic visa processing</li>
+                        <li>✓ Document review</li>
+                        <li>✓ Email support</li>
+                        <li>✓ 5-7 business days</li>
+                    </ul>
+                    <button class="select-btn">Select Plan</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Express Tourist</h3>
+                    <div class="price"><span class="price-currency">€</span>1,840</div>
+                    <ul class="features">
+                        <li>✓ Priority processing</li>
+                        <li>✓ Document review</li>
+                        <li>✓ Phone support</li>
+                        <li>✓ 2-3 business days</li>
+                    </ul>
+                    <button class="select-btn">Select Plan</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Business Visa</h3>
+                    <div class="price"><span class="price-currency">€</span>3,220</div>
+                    <ul class="features">
+                        <li>✓ Full business support</li>
+                        <li>✓ Legal documentation</li>
+                        <li>✓ Dedicated agent</li>
+                        <li>✓ 3-5 business days</li>
+                    </ul>
+                    <button class="select-btn">Select Plan</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Student Visa</h3>
+                    <div class="price"><span class="price-currency">€</span>3,540</div>
+                    <ul class="features">
+                        <li>✓ University placement help</li>
+                        <li>✓ Financial documentation</li>
+                        <li>✓ Priority processing</li>
+                        <li>✓ 3-5 business days</li>
+                    </ul>
+                    <button class="select-btn">Select Plan</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Work Permit</h3>
+                    <div class="price"><span class="price-currency">€</span>4,160</div>
+                    <ul class="features">
+                        <li>✓ Employment verification</li>
+                        <li>✓ Labor documentation</li>
+                        <li>✓ Compliance check</li>
+                        <li>✓ 5-7 business days</li>
+                    </ul>
+                    <button class="select-btn">Select Plan</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Permanent Residence</h3>
+                    <div class="price"><span class="price-currency">€</span>6,930</div>
+                    <ul class="features">
+                        <li>✓ Full residency support</li>
+                        <li>✓ Legal consultation</li>
+                        <li>✓ Premium service</li>
+                        <li>✓ 7-10 business days</li>
+                    </ul>
+                    <button class="select-btn">Select Plan</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ PAGE -->
+        <div id="faq" class="page">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How long does visa processing take?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">Processing times vary by visa type, typically ranging from 2-10 business days. Express options available for faster processing.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What documents do I need?</span>
+                    <span class="faq-toggle">+</span>
