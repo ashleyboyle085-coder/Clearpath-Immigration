@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
-
-<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +10,7 @@
   :root {
     --navy: #0d1f3c; --navy-light: #1a3260;
     --gold: #b8974a; --gold-light: #d4b06a;
+    --charcoal: #1e2535;
     --white: #ffffff; --offwhite: #f7f5f2;
     --gray: #6b7280;
   }
@@ -33,175 +22,182 @@
 
 /* NAV */
 header {
-position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-display: flex; justify-content: space-between; align-items: center;
-padding: 0 8%; height: 70px;
-background: rgba(13,31,60,0.97); backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(184,151,74,0.2); transition: all 0.3s;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 8%; height: 70px;
+  background: rgba(13,31,60,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184,151,74,0.2); transition: all 0.3s;
 }
 header.scrolled { height: 60px; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
-.logo { font-family: ‘Cormorant Garamond’, serif; font-size: 1.5rem; font-weight: 700; color: var(–white); }
-.logo span { color: var(–gold); }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); }
+.logo span { color: var(--gold); }
 nav { display: flex; align-items: center; gap: 0.3rem; }
 nav a { color: rgba(255,255,255,0.75); padding: 0.5rem 1rem; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; position: relative; }
-nav a::after { content: ‘’; position: absolute; bottom: 0; left: 1rem; right: 1rem; height: 1px; background: var(–gold); transform: scaleX(0); transition: transform 0.25s; }
-nav a:hover { color: var(–white); }
+nav a::after { content: ''; position: absolute; bottom: 0; left: 1rem; right: 1rem; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.25s; }
+nav a:hover { color: var(--white); }
 nav a:hover::after { transform: scaleX(1); }
-.nav-cta { background: var(–gold) !important; color: var(–navy) !important; border-radius: 4px; font-weight: 600 !important; margin-left: 0.5rem; }
+.nav-cta { background: var(--gold) !important; color: var(--navy) !important; border-radius: 4px; font-weight: 600 !important; margin-left: 0.5rem; }
 .nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(–gold-light) !important; }
+.nav-cta:hover { background: var(--gold-light) !important; }
 
 /* HERO */
 .hero { height: 100vh; min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: url(“https://images.unsplash.com/photo-1521791055366-0d553872952f?w=1600&q=80”) center/cover no-repeat; transform: scale(1.05); transition: transform 8s ease; }
+.hero-bg { position: absolute; inset: 0; background: url("https://images.unsplash.com/photo-1521791055366-0d553872952f?w=1600&q=80") center/cover no-repeat; transform: scale(1.05); transition: transform 8s ease; }
 .hero-bg.loaded { transform: scale(1); }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,31,60,0.85), rgba(13,31,60,0.6)); }
 .hero-content { position: relative; z-index: 2; opacity: 0; transform: translateY(30px); transition: opacity 0.9s, transform 0.9s; }
 .hero-content.visible { opacity: 1; transform: translateY(0); }
-.hero-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–gold); font-weight: 500; margin-bottom: 1.5rem; }
-.hero-tag::before, .hero-tag::after { content: ‘’; width: 30px; height: 1px; background: var(–gold); }
-.hero h1 { font-family: ‘Cormorant Garamond’, serif; font-size: clamp(3rem,6vw,5.5rem); color: var(–white); font-weight: 700; line-height: 1.1; margin-bottom: 1.2rem; }
-.hero h1 span { color: var(–gold); }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
+.hero-tag::before, .hero-tag::after { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem,6vw,5.5rem); color: var(--white); font-weight: 700; line-height: 1.1; margin-bottom: 1.2rem; }
+.hero h1 span { color: var(--gold); }
 .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
 .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn { padding: 0.9rem 2rem; border-radius: 4px; font-family: ‘Poppins’, sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; }
-.btn-gold { background: var(–gold); color: var(–navy); }
-.btn-gold:hover { background: var(–gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(184,151,74,0.4); }
-.btn-outline-white { background: transparent; color: var(–white); border: 1.5px solid rgba(255,255,255,0.5); }
-.btn-outline-white:hover { border-color: var(–white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.btn { padding: 0.9rem 2rem; border-radius: 4px; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(184,151,74,0.4); }
+.btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.5); }
+.btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; animation: bounce 2s infinite; }
 .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); }
+
 /* STATS */
-.stats-bar { background: var(–navy); display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 2px solid var(–gold); }
+.stats-bar { background: var(--navy); display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 2px solid var(--gold); }
 .stat-item { padding: 2rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
 .stat-item.visible { opacity: 1; transform: translateY(0); }
 .stat-item:last-child { border-right: none; }
-.stat-num { font-family: ‘Cormorant Garamond’, serif; font-size: 2.5rem; font-weight: 700; color: var(–gold); line-height: 1; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
 .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; }
 
 /* SECTIONS */
 section { padding: 6rem 8%; }
 .section-intro { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-.section-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–gold); font-weight: 600; margin-bottom: 0.8rem; }
-.section-tag::before { content: ‘’; width: 20px; height: 1px; background: var(–gold); }
-h2 { font-family: ‘Cormorant Garamond’, serif; font-size: clamp(2rem,3vw,2.8rem); font-weight: 700; line-height: 1.2; }
-.section-intro p { color: var(–gray); line-height: 1.75; margin-top: 1rem; font-size: 0.95rem; }
+.section-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.8rem; }
+.section-tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,3vw,2.8rem); font-weight: 700; line-height: 1.2; }
+.section-intro p { color: var(--gray); line-height: 1.75; margin-top: 1rem; font-size: 0.95rem; }
 
 /* SERVICES */
-.services { background: var(–offwhite); }
+.services { background: var(--offwhite); }
 .cards-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-.card { background: var(–white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 20px rgba(13,31,60,0.07); opacity: 0; transform: translateY(30px); transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s; }
+.card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 20px rgba(13,31,60,0.07); opacity: 0; transform: translateY(30px); transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s; }
 .card.visible { opacity: 1; transform: translateY(0); }
 .card:hover { transform: translateY(-6px) !important; box-shadow: 0 16px 40px rgba(13,31,60,0.15); }
 .card-img { position: relative; overflow: hidden; height: 220px; }
 .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
 .card:hover .card-img img { transform: scale(1.07); }
 .card-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,31,60,0.5), transparent 60%); }
-.card-icon { position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; background: var(–gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.card-icon { position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
 .card-body { padding: 1.6rem; }
-.card-body h3 { font-family: ‘Cormorant Garamond’, serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; color: var(–navy); }
-.card-body p { font-size: 0.87rem; color: var(–gray); line-height: 1.7; }
-.card-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; color: var(–gold); font-size: 0.82rem; font-weight: 600; text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: gap 0.2s; }
+.card-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--navy); }
+.card-body p { font-size: 0.87rem; color: var(--gray); line-height: 1.7; }
+.card-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; color: var(--gold); font-size: 0.82rem; font-weight: 600; text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: gap 0.2s; }
 .card-link:hover { gap: 0.7rem; }
 
 /* WHY US */
-.why-us { background: var(–navy); color: var(–white); }
+.why-us { background: var(--navy); color: var(--white); }
 .why-us .section-intro p { color: rgba(255,255,255,0.6); }
-.why-us h2 { color: var(–white); }
+.why-us h2 { color: var(--white); }
 .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
 .feature { text-align: center; padding: 2.5rem 1.5rem; border: 1px solid rgba(184,151,74,0.2); border-radius: 8px; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s, border-color 0.3s, background 0.3s; }
 .feature.visible { opacity: 1; transform: translateY(0); }
-.feature:hover { border-color: var(–gold); background: rgba(184,151,74,0.05); }
+.feature:hover { border-color: var(--gold); background: rgba(184,151,74,0.05); }
 .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-.feature h3 { font-family: ‘Cormorant Garamond’, serif; font-size: 1.3rem; margin-bottom: 0.8rem; color: var(–gold); }
+.feature h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--gold); }
 .feature p { font-size: 0.87rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
 
 /* BOOKING FORM */
-.booking { background: var(–offwhite); }
+.booking { background: var(--offwhite); }
 .booking-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; max-width: 1100px; margin: 0 auto; align-items: start; }
-.booking-info { padding: 3rem; background: var(–navy); border-radius: 8px; color: var(–white); }
-.booking-info h3 { font-family: ‘Cormorant Garamond’, serif; font-size: 1.8rem; color: var(–gold); margin-bottom: 1rem; }
+
+/* ── BOOKING INFO PANEL: dark charcoal so white text pops ── */
+.booking-info {
+  padding: 3rem;
+  background: var(--charcoal);
+  border-radius: 8px;
+  color: var(--white);
+  border: 1px solid rgba(184,151,74,0.15);
+}
+.booking-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
 .booking-info p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2rem; }
 .booking-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
 .booking-detail-icon { width: 40px; height: 40px; background: rgba(184,151,74,0.15); border: 1px solid rgba(184,151,74,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-.booking-detail-text { font-size: 0.88rem; color: rgba(255,255,255,0.8); }
-.booking-detail-label { font-size: 0.7rem; color: var(–gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+.booking-detail-label { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+.booking-detail-text { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
 
-.form-card { background: var(–white); border-radius: 8px; padding: 2.5rem; box-shadow: 0 4px 30px rgba(13,31,60,0.1); }
-.form-card h3 { font-family: ‘Cormorant Garamond’, serif; font-size: 1.6rem; color: var(–navy); margin-bottom: 0.4rem; }
-.form-card .form-sub { font-size: 0.85rem; color: var(–gray); margin-bottom: 2rem; }
+.form-card { background: var(--white); border-radius: 8px; padding: 2.5rem; box-shadow: 0 4px 30px rgba(13,31,60,0.1); }
+.form-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 0.4rem; }
+.form-card .form-sub { font-size: 0.85rem; color: var(--gray); margin-bottom: 2rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-group { margin-bottom: 1.2rem; }
-.form-group label { display: block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(–navy); margin-bottom: 0.5rem; }
+.form-group label { display: block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 0.5rem; }
 .form-group input,
 .form-group select,
 .form-group textarea {
-width: 100%; padding: 0.85rem 1rem;
-border: 1.5px solid #e2ddd8; border-radius: 4px;
-font-family: ‘Poppins’, sans-serif; font-size: 0.88rem; color: var(–navy);
-background: #fafaf8; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%; padding: 0.85rem 1rem;
+  border: 1.5px solid #e2ddd8; border-radius: 4px;
+  font-family: 'Poppins', sans-serif; font-size: 0.88rem; color: var(--navy);
+  background: #fafaf8; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
 }
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus { border-color: var(–gold); box-shadow: 0 0 0 3px rgba(184,151,74,0.12); background: var(–white); }
+.form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,151,74,0.12); background: var(--white); }
 .form-group textarea { resize: vertical; min-height: 100px; }
-.form-group select { appearance: none; background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘8’ viewBox=‘0 0 12 8’%3E%3Cpath d=‘M1 1l5 5 5-5’ stroke=’%23b8974a’ stroke-width=‘1.5’ fill=‘none’/%3E%3C/svg%3E”); background-repeat: no-repeat; background-position: right 1rem center; }
-.form-submit { width: 100%; padding: 1rem; background: var(–navy); color: var(–white); border: none; border-radius: 4px; font-family: ‘Poppins’, sans-serif; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; margin-top: 0.5rem; }
-.form-submit:hover { background: var(–gold); color: var(–navy); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(184,151,74,0.35); }
-.form-note { font-size: 0.75rem; color: var(–gray); text-align: center; margin-top: 1rem; }
+.form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8974a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+.form-submit { width: 100%; padding: 1rem; background: var(--navy); color: var(--white); border: none; border-radius: 4px; font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; margin-top: 0.5rem; }
+.form-submit:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(184,151,74,0.35); }
+.form-note { font-size: 0.75rem; color: var(--gray); text-align: center; margin-top: 1rem; }
 
 /* SUCCESS MESSAGE */
 .success-msg { display: none; text-align: center; padding: 2rem; }
 .success-msg .check { font-size: 3rem; margin-bottom: 1rem; }
-.success-msg h4 { font-family: ‘Cormorant Garamond’, serif; font-size: 1.5rem; color: var(–navy); margin-bottom: 0.5rem; }
-.success-msg p { font-size: 0.88rem; color: var(–gray); }
+.success-msg h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; }
+.success-msg p { font-size: 0.88rem; color: var(--gray); }
 
 /* LOCATION */
-.location { background: var(–white); }
+.location { background: var(--white); }
 .location-inner { display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: start; max-width: 1100px; margin: 0 auto; }
-.location-info { padding: 2.5rem; background: var(–navy); border-radius: 8px; color: var(–white); }
-.location-info h3 { font-family: ‘Cormorant Garamond’, serif; font-size: 1.6rem; color: var(–gold); margin-bottom: 1.5rem; }
+.location-info { padding: 2.5rem; background: var(--charcoal); border-radius: 8px; color: var(--white); border: 1px solid rgba(184,151,74,0.15); }
+.location-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold); margin-bottom: 1.5rem; }
 .info-row { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .info-row:last-child { border-bottom: none; }
 .info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-.info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(–gold); margin-bottom: 0.3rem; }
+.info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.3rem; }
 .info-value { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
 .map-wrap { border-radius: 8px; overflow: hidden; box-shadow: 0 8px 40px rgba(13,31,60,0.15); }
 .map-wrap iframe { display: block; width: 100%; height: 420px; border: 0; }
 
 /* CTA */
-.cta-band { background: linear-gradient(135deg, var(–navy-light), var(–navy)); text-align: center; padding: 5rem 8%; position: relative; overflow: hidden; }
-.cta-band::before { content: ‘’; position: absolute; top: -50%; left: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(184,151,74,0.1), transparent 70%); }
-.cta-band h2 { font-family: ‘Cormorant Garamond’, serif; font-size: 2.5rem; color: var(–white); margin-bottom: 1rem; position: relative; }
-.cta-band h2 span { color: var(–gold); }
+.cta-band { background: linear-gradient(135deg, var(--navy-light), var(--navy)); text-align: center; padding: 5rem 8%; position: relative; overflow: hidden; }
+.cta-band::before { content: ''; position: absolute; top: -50%; left: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(184,151,74,0.1), transparent 70%); }
+.cta-band h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1rem; position: relative; }
+.cta-band h2 span { color: var(--gold); }
 .cta-band p { color: rgba(255,255,255,0.65); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; position: relative; }
 
 /* FOOTER */
 footer { background: #07111f; color: rgba(255,255,255,0.4); padding: 2rem 8%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; }
-.footer-logo { font-family: ‘Cormorant Garamond’, serif; font-size: 1.2rem; color: var(–white); }
-.footer-logo span { color: var(–gold); }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--white); }
+.footer-logo span { color: var(--gold); }
 .footer-links { display: flex; gap: 1.5rem; }
 .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(–gold); }
+.footer-links a:hover { color: var(--gold); }
 
 @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
 @media (max-width: 900px) {
-header { padding: 0 5%; }
-nav a:not(.nav-cta) { display: none; }
-.stats-bar { grid-template-columns: repeat(2,1fr); }
-section { padding: 4rem 5%; }
-.cards-grid, .features-grid, .booking-inner, .location-inner { grid-template-columns: 1fr; }
-.form-row { grid-template-columns: 1fr; }
-footer { flex-direction: column; text-align: center; }
+  header { padding: 0 5%; }
+  nav a:not(.nav-cta) { display: none; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); }
+  section { padding: 4rem 5%; }
+  .cards-grid, .features-grid, .booking-inner, .location-inner { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
 }
 </style>
-
 </head>
 <body>
 
 <!-- HEADER -->
-
 <header id="header">
   <div class="logo">Clearpath <span>Immigration</span></div>
   <nav>
@@ -214,7 +210,6 @@ footer { flex-direction: column; text-align: center; }
 </header>
 
 <!-- HERO -->
-
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
@@ -234,7 +229,6 @@ footer { flex-direction: column; text-align: center; }
 </section>
 
 <!-- STATS -->
-
 <div class="stats-bar">
   <div class="stat-item" data-delay="0"><div class="stat-num">500+</div><div class="stat-label">Cases Handled</div></div>
   <div class="stat-item" data-delay="100"><div class="stat-num">98%</div><div class="stat-label">Success Rate</div></div>
@@ -243,7 +237,6 @@ footer { flex-direction: column; text-align: center; }
 </div>
 
 <!-- SERVICES -->
-
 <section class="services" id="services">
   <div class="section-intro">
     <div class="section-tag">What We Offer</div>
@@ -303,7 +296,6 @@ footer { flex-direction: column; text-align: center; }
 </section>
 
 <!-- WHY US -->
-
 <section class="why-us" id="why-us">
   <div class="section-intro">
     <div class="section-tag">Why Choose Us</div>
@@ -330,7 +322,6 @@ footer { flex-direction: column; text-align: center; }
 </section>
 
 <!-- BOOKING FORM -->
-
 <section class="booking" id="booking">
   <div class="section-intro">
     <div class="section-tag">Free Consultation</div>
@@ -338,9 +329,11 @@ footer { flex-direction: column; text-align: center; }
     <p>Fill in the form below and one of our immigration advisors will be in touch within 24 hours.</p>
   </div>
   <div class="booking-inner">
+
     <div class="booking-info">
       <h3>What to Expect</h3>
       <p>Our free consultation is a no-obligation call with an expert immigration advisor. We'll review your situation and give you clear guidance on your best options.</p>
+
       <div class="booking-detail">
         <div class="booking-detail-icon">📞</div>
         <div>
@@ -348,6 +341,7 @@ footer { flex-direction: column; text-align: center; }
           <div class="booking-detail-text">+353 89 949 1178</div>
         </div>
       </div>
+
       <div class="booking-detail">
         <div class="booking-detail-icon">✉️</div>
         <div>
@@ -355,6 +349,7 @@ footer { flex-direction: column; text-align: center; }
           <div class="booking-detail-text">clearpathimmigration.service@gmail.com</div>
         </div>
       </div>
+
       <div class="booking-detail">
         <div class="booking-detail-icon">🕐</div>
         <div>
@@ -362,89 +357,86 @@ footer { flex-direction: column; text-align: center; }
           <div class="booking-detail-text">Within 24 hours</div>
         </div>
       </div>
+
       <div class="booking-detail">
         <div class="booking-detail-icon">💬</div>
         <div>
           <div class="booking-detail-label">Consultation</div>
-          <div class="booking-detail-text">Free, no obligation</div>
+          <div class="booking-detail-text">Free, no-obligation session with a qualified advisor</div>
         </div>
       </div>
     </div>
 
-```
-<div class="form-card">
-  <h3>Request a Consultation</h3>
-  <p class="form-sub">We'll get back to you within 24 hours.</p>
+    <div class="form-card">
+      <h3>Request a Consultation</h3>
+      <p class="form-sub">We'll get back to you within 24 hours.</p>
 
-  <!-- Netlify Form — add data-netlify="true" when hosting on Netlify -->
-  <form id="bookingForm" name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="consultation">
-    <input type="hidden" name="bot-field" style="display:none">
+      <form id="bookingForm" name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="consultation">
+        <input type="hidden" name="bot-field" style="display:none">
 
-    <div class="form-row">
-      <div class="form-group">
-        <label for="firstName">First Name *</label>
-        <input type="text" id="firstName" name="firstName" placeholder="John" required>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+353 ...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nationality">Nationality *</label>
+          <input type="text" id="nationality" name="nationality" placeholder="e.g. Iranian, Indian, Brazilian..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="visaType">Visa / Service Type *</label>
+          <select id="visaType" name="visaType" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>Student Visa</option>
+            <option>Work Visa</option>
+            <option>Family Reunification</option>
+            <option>Permanent Residency</option>
+            <option>Citizenship Application</option>
+            <option>Relocation Support</option>
+            <option>General Immigration Advice</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell Us About Your Situation</label>
+          <textarea id="message" name="message" placeholder="Briefly describe your immigration needs or questions..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Consultation Request</button>
+        <p class="form-note">🔒 Your information is kept strictly confidential.</p>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <div class="check">✅</div>
+        <h4>Request Sent Successfully!</h4>
+        <p>Thank you! One of our advisors will contact you within 24 hours.</p>
       </div>
-      <div class="form-group">
-        <label for="lastName">Last Name *</label>
-        <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
-      </div>
     </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" placeholder="john@example.com" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="+353 ...">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="nationality">Nationality *</label>
-      <input type="text" id="nationality" name="nationality" placeholder="e.g. Iranian, Indian, Brazilian..." required>
-    </div>
-
-    <div class="form-group">
-      <label for="visaType">Visa / Service Type *</label>
-      <select id="visaType" name="visaType" required>
-        <option value="" disabled selected>Select a service...</option>
-        <option>Student Visa</option>
-        <option>Work Visa</option>
-        <option>Family Reunification</option>
-        <option>Permanent Residency</option>
-        <option>Citizenship Application</option>
-        <option>Relocation Support</option>
-        <option>General Immigration Advice</option>
-        <option>Other</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="message">Tell Us About Your Situation</label>
-      <textarea id="message" name="message" placeholder="Briefly describe your immigration needs or questions..."></textarea>
-    </div>
-
-    <button type="submit" class="form-submit">Send Consultation Request</button>
-    <p class="form-note">🔒 Your information is kept strictly confidential.</p>
-  </form>
-
-  <div class="success-msg" id="successMsg">
-    <div class="check">✅</div>
-    <h4>Request Sent Successfully!</h4>
-    <p>Thank you! One of our advisors will contact you within 24 hours.</p>
-  </div>
-</div>
-```
 
   </div>
 </section>
 
 <!-- LOCATION -->
-
 <section class="location" id="location">
   <div class="section-intro">
     <div class="section-tag">Find Us</div>
@@ -489,7 +481,6 @@ footer { flex-direction: column; text-align: center; }
 </section>
 
 <!-- CTA -->
-
 <div class="cta-band">
   <h2>Ready to Start Your <span>Journey?</span></h2>
   <p>Book a free consultation with one of our immigration experts today and take the first step toward your new life.</p>
@@ -497,7 +488,6 @@ footer { flex-direction: column; text-align: center; }
 </div>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="footer-logo">Clearpath <span>Immigration</span></div>
   <div class="footer-links">
@@ -563,13 +553,10 @@ footer { flex-direction: column; text-align: center; }
     });
   }, { threshold: 0.3 }).observe(document.querySelector('.stats-bar'));
 
-  // Form submission (works with Netlify Forms when hosted on Netlify)
+  // Form submission
   const form = document.getElementById('bookingForm');
   const successMsg = document.getElementById('successMsg');
   form.addEventListener('submit', function(e) {
-    // When hosted on Netlify, remove the e.preventDefault() below
-    // so Netlify can handle the submission natively.
-    // For local testing, we show a success message manually.
     e.preventDefault();
     const btn = form.querySelector('.form-submit');
     btn.textContent = 'Sending...';
@@ -582,8 +569,4 @@ footer { flex-direction: column; text-align: center; }
 </script>
 
 </body>
-</html>
-    
-  </body>
-  
 </html>
